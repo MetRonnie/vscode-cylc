@@ -6,7 +6,10 @@
         {
             "label": "build json",
             "type": "shell",
-            "command": "npm run --prefix ./syntaxes build",
+            "command": "npm run build",
+            "options": {
+                "cwd": "${workspaceFolder}/syntaxes"
+            },
             "group": {
                 "kind": "build",
                 "isDefault": true
@@ -14,6 +17,37 @@
             "presentation": {
                 "reveal": "silent"
             }
-        }
+        },
+        {
+            "label": "build & test",
+            "type": "shell",
+            "command": "npm run test -- --compact",
+            "options": {
+                "cwd": "${workspaceFolder}/syntaxes"
+            },
+            "group": "test",
+            "presentation": {
+                "reveal": "always"
+            },
+            "problemMatcher": {
+                "owner": "vscode-tmgrammar-test",
+                "fileLocation": [
+                    "relative",
+                    "${workspaceFolder}/syntaxes",
+                ],
+                "pattern": [
+                    {
+                        "regexp": "^(ERROR)\\s([^:]+):(\\d+):(\\d+):(\\d+)\\s(.*)$",
+                        "severity": 1,
+                        "file": 2,
+                        "line": 3,
+                        "column": 4,
+                        "endColumn": 5,
+                        "message": 6,
+                    },
+                ],
+            },
+            "dependsOn": "build json",
+        },
     ]
 }
