@@ -43,7 +43,8 @@
                 "scopeName": "source.cylc",
                 "path": "./syntaxes/cylc.tmLanguage.json",
                 "embeddedLanguages": {
-                    "source.jinja": "jinja"
+                    "source.jinja": "jinja",
+                    "source.shell": "shellscript"
                 }
             }
         ]
